@@ -6,9 +6,8 @@
 
 **RN** => Regra de Negócio
     Não deve ser possível cadastrar um carro já existente.
-    Não deve ser possível alterar a placa de um carro já cadastrado.
     O carro deve ser cadastrado, por padrão, com disponibilidade.
-    O usuário responsável pelo cadastro deve ser um administrador
+    * O usuário responsável pelo cadastro deve ser um administrador
 
 # Listagem de Carros
 
