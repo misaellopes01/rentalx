@@ -32,11 +32,7 @@ class CreateCarSpecificationUseCase {
 
     carExists.specifications = specifications;
 
-    console.log(carExists.specifications);
-
-    const test = await this.carsRepository.create(carExists);
-
-    console.log(test);
+    await this.carsRepository.create(carExists);
 
     return carExists;
   }
