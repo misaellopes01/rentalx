@@ -32,7 +32,7 @@ describe("List Category Controller", () => {
       email: "admin@rentx.com",
       password: "admin",
     });
-    const { token } = responseToken.body;
+    const { refresh_token } = responseToken.body;
 
     await request(app)
       .post("/categories")
@@ -41,7 +41,7 @@ describe("List Category Controller", () => {
         description: "SuperTest",
       })
       .set({
-        Authorization: `Baerer ${token}`,
+        Authorization: `Baerer ${refresh_token}`,
       });
 
     const response = await request(app).get("/categories");
