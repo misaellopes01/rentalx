@@ -1,26 +1,25 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
+
 import { UploadCarImageUseCase } from "./UploadCarImageUseCase";
 
-interface IFiles{
-    filename: string
+interface IFiles {
+  filename: string;
 }
 
-class UploadCarImageController{
+class UploadCarImageController {
+  async handle(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+    const images = request.files as IFiles[];
 
-    async handle(request: Request, response: Response): Promise<Response>{
+    const uploadCarImageUseCase = container.resolve(UploadCarImageUseCase);
 
-        const { id } = request.params
-        const images = request.files as IFiles[]
+    const images_name = images.map((file) => file.filename);
 
-        const uploadCarImageUseCase = container.resolve(UploadCarImageUseCase)
+    await uploadCarImageUseCase.execute({ car_id: id, images_name });
 
-        const images_name = images.map((file) => file.filename)
-
-        await uploadCarImageUseCase.execute({ car_id: id, images_name})
-
-        return response.status(201).send()
-    }
+    return response.status(201).send();
+  }
 }
 
-export { UploadCarImageController }
+export { UploadCarImageController };

@@ -102,3 +102,7 @@
 
 - O usuário precisa informar uma nova senha
 - O link enviado para a recuperação deve expirar em 3 horas
+
+Storages = S3
+
+
